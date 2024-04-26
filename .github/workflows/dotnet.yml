@@ -54,6 +54,14 @@ jobs:
       uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy web app
+      id: deploywebapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.app-name }}
+        slot-name: staging
+        package: website        
     
     - name: Logout Azure CLI
       run: az logout
