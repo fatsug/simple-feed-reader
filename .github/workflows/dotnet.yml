@@ -61,7 +61,7 @@ jobs:
       with:
         app-name: mywebapp1672
         slot-name: staging
-        package: website        
-    
+        package: website
+        
     - name: Logout Azure CLI
       run: az logout
