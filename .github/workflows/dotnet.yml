@@ -46,14 +46,15 @@ jobs:
     
     steps:
     - name: Download a Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: website
-        path: website/**
+        
     - name: Login via Azure CLI
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
     - name: Deploy web app
       id: deploywebapp
       uses: azure/webapps-deploy@v2
@@ -61,5 +62,6 @@ jobs:
         app-name: ${{ env.app-name }}
         slot-name: staging
         package: website
+    
     - name: az cli logout
       run: az logout
