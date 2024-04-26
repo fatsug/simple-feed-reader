@@ -50,14 +50,6 @@ jobs:
       with:
         name: website
     
-    - name: Deploy web app
-      id: deploywebapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.app-name }}
-        slot-name: staging
-        package: website
-
     # Deploy to Azure Web apps
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v2
