@@ -49,6 +49,11 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: website
+
+    - name: Login via Azure CLI
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     # Deploy to Azure Web apps
     - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -56,5 +61,5 @@ jobs:
       with: 
         app-name: ${{ env.app-name }}
         slot-name: staging
-        publish-profile: ${{ secrets.AZURE_CREDENTIALS  }} # Define secret variable in repository settings as per action documentation
+        #publish-profile: ${{ secrets.AZURE_CREDENTIALS  }} # Define secret variable in repository settings as per action documentation
         package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/mywebapp1672'
