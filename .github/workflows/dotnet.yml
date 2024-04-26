@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v4.3.3
       with:
         name: website
-        path: SimpleFeedReader/website**
+        path: SimpleFeedReader/website/**
         if-no-files-found: error
         retention-days: 1
         compression-level: 6
