@@ -49,7 +49,7 @@ jobs:
         run: az logout
 
   deploy_prod:
-    needs: deploy_staging
+    needs: build_and_deploy
     runs-on: ubuntu-latest
   
     environment:
