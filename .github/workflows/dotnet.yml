@@ -52,7 +52,7 @@ jobs:
         with:
           app-name: mywebapp1672  # The name of your Azure Web App
           slot-name: 'staging'  # Optional: for App Service deployment slots
-          app-settings-json: [ { "name": "UI:Index:Header", "value": "${{ secrets.INDEX_HEADER }}","slotSetting": true } ]
+          app-settings-json: '[ { "name": "UI:Index:Header", "value": "${{ secrets.INDEX_HEADER }}","slotSetting": true } ]'
 
       - name: Logout Azure CLI
         run: az logout
