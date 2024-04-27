@@ -76,6 +76,12 @@ jobs:
       run: az webapp deployment slot swap --resource-group ResourceGroupAzureTutorial --name mywebapp1672 --slot staging --subscription d0762df1-a02f-4ecd-9fdd-ddc33fd595e7
 #        url=$(az webapp show --resource-group ResourceGroupAzureTutorial --name mywebapp1672 --query "defaultHostName" -o tsv)
 #        echo "::set-output name=url::http://$url"
-      
+
+    - name: Update Config
+      uses: azure/appservice-settings@v1  # Deploy to Azure Web App
+      with:
+        app-name: mywebapp1672  # The name of your Azure Web App
+        app-settings-json: '[ { "name": "UI:Index:Header", "value": "${{ secrets.INDEX_HEADER }}","slotSetting": true } ]'
+
     - name: az cli logout
       run: az logout
