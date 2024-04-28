@@ -1,5 +1,7 @@
-﻿
+﻿using Microsoft.Extensions.Azure;
+
 namespace SimpleFeedReader;
+
 public class Startup
 {
     public Startup(IConfiguration configuration)
@@ -15,6 +17,12 @@ public class Startup
         services.AddAutoMapper(typeof(Startup));
 
         services.AddRazorPages();
+
+        services.AddAzureClients(b =>
+            b.AddServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
+
+        services.AddKeyedSingleton<IMessagePublisher, QueueMessagePublisher>("Queue");
+        services.AddKeyedSingleton<IMessagePublisher, TopicMessagePublisher>("Topic");
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,9 +40,6 @@ public class Startup
 
         app.UseRouting();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapRazorPages();
-        });
+        app.UseEndpoints(endpoints => { endpoints.MapRazorPages(); });
     }
 }

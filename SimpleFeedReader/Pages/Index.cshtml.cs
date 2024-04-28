@@ -13,12 +13,15 @@ namespace SimpleFeedReader.Pages
     public class IndexModel : PageModel
     {
         private readonly NewsService _newsService;
-        private readonly IConfiguration _configuration;  
-   
-        public IndexModel(NewsService newsService, IConfiguration configuration)
+        private readonly IConfiguration _configuration;
+        private readonly IMessagePublisher _messagePublisher;
+
+        // public IndexModel(NewsService newsService, IConfiguration configuration, [FromKeyedServices("Queue")] IMessagePublisher messagePublisher)
+        public IndexModel(NewsService newsService, IConfiguration configuration, [FromKeyedServices("Topic")] IMessagePublisher messagePublisher)
         {
             _newsService = newsService;
             _configuration = configuration;
+            _messagePublisher = messagePublisher;
         }
 
         public string ErrorText { get; private set; }
@@ -35,6 +38,11 @@ namespace SimpleFeedReader.Pages
                 try
                 {
                     NewsItems = await _newsService.GetNews(feedUrl);
+
+                    foreach (var item in NewsItems)
+                    {
+                        await _messagePublisher.Publish(item);
+                    }
                 }
                 catch (UriFormatException)
                 {
