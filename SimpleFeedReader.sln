@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFeedReader.Tests", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFeed.Consumer", "SimpleFeed.Consumer\SimpleFeed.Consumer.csproj", "{06D366D6-CF5F-4F99-9658-A5CD9253014E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleReader.Functions", "SimpleReader.Functions\SimpleReader.Functions.csproj", "{190A2EC7-6B65-4E48-B593-6C9D1C68BC94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{06D366D6-CF5F-4F99-9658-A5CD9253014E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06D366D6-CF5F-4F99-9658-A5CD9253014E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06D366D6-CF5F-4F99-9658-A5CD9253014E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{190A2EC7-6B65-4E48-B593-6C9D1C68BC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190A2EC7-6B65-4E48-B593-6C9D1C68BC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190A2EC7-6B65-4E48-B593-6C9D1C68BC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190A2EC7-6B65-4E48-B593-6C9D1C68BC94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

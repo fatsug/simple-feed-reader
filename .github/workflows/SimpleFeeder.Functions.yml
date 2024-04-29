@@ -1,0 +1,41 @@
+name: Publish SimpleReader.Functions 🚀
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  AZURE_WEBAPP_NAME: simple-reader-functions
+  AZURE_WEBAPP_PACKAGE_PATH: "./publish"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+#        run: dotnet restore ./CurrentTimeService.sln
+        run: dotnet restore 
+
+      - name: Build
+#        run: dotnet build ./CurrentTimeService.sln --configuration Release --no-restore
+        run: dotnet build ./SimpleReader.Functions/SimpleReader.Functions.csproj  --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish ./SimpleReader.Functions/SimpleReader.Functions.csproj --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+
+      - name: Deployment
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F34296A10B4A425DB32438399D093657 }}
+          package: "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
