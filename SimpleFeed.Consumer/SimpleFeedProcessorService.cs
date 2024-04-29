@@ -11,7 +11,7 @@ public class SimpleFeedProcessorService(IConfiguration configuration, ISimpleFee
     
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _processor.StartProcessingAsync();
+        // _processor.StartProcessingAsync();
         return Task.CompletedTask;
     }
 }

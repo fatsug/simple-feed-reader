@@ -23,6 +23,8 @@ public class SimpleFeedProcessorFactory(IConfiguration configuration, ServiceBus
         processor.ProcessMessageAsync += MessageHandler;
         processor.ProcessErrorAsync += ErrorHandler;
 
+        processor.StartProcessingAsync();
+
         return processor;
     }
     
