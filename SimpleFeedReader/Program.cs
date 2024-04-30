@@ -1,5 +1,5 @@
-﻿
-namespace SimpleFeedReader;
+﻿namespace SimpleFeedReader;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -9,8 +9,6 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
+            .ConfigureHostConfiguration(builder => builder.AddUserSecrets<Program>())
+            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
 }

@@ -12,14 +12,12 @@
     <ItemGroup>
       <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.5" />
       <PackageReference Include="Microsoft.Extensions.Azure" Version="1.7.3" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="appsettings.json" />
-      <Content Include="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 
 </Project>
