@@ -6,7 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>SimpleFeed.Consumer</RootNamespace>
-    </PropertyGroup>
+      <UserSecretsId>ef8a7f15-771e-4922-b46a-9fa9559c51b3</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.17.5" />
