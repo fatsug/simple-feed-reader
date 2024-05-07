@@ -12,7 +12,7 @@ HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
 //
 builder.Configuration.AddUserSecrets<Program>();
 
-// var test = builder.Configuration.GetValue<string>("ServiceBus:ConnectionString");
+var test = builder.Configuration.GetValue<string>("ServiceBus:ConnectionString");
 
 builder.Services.AddAzureClients(b =>
     b.AddServiceBusClient(builder.Configuration.GetValue<string>("ServiceBus:ConnectionString")));

@@ -17,6 +17,8 @@ public class Startup
         services.AddAutoMapper(typeof(Startup));
 
         services.AddRazorPages();
+        
+        var test = Configuration.GetValue<string>("ServiceBus:ConnectionString");
 
         services.AddAzureClients(b =>
             b.AddServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
