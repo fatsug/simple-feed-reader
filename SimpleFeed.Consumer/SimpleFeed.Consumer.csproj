@@ -6,7 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>SimpleFeed.Consumer</RootNamespace>
-      <UserSecretsId>ef8a7f15-771e-4922-b46a-9fa9559c51b3</UserSecretsId>
+      <UserSecretsId>f0f800e4-3536-490a-8081-e07d8ea93596</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +18,9 @@
 
     <ItemGroup>
       <None Remove="appsettings.json" />
+      <Content Include="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

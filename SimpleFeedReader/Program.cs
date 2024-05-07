@@ -9,6 +9,9 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
-            .ConfigureHostConfiguration(builder => builder.AddUserSecrets<Program>())
-            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureAppConfiguration(builder => builder.AddUserSecrets<Program>());
+                webBuilder.UseStartup<Startup>();
+            });
 }
