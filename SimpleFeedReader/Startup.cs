@@ -18,7 +18,7 @@ public class Startup
 
         services.AddRazorPages();
         
-        var test = Configuration.GetValue<string>("ServiceBus:ConnectionString");
+        // var test = Configuration.GetValue<string>("ServiceBus:ConnectionString");
 
         services.AddAzureClients(b =>
             b.AddServiceBusClient(Configuration.GetValue<string>("ServiceBus:ConnectionString")));
